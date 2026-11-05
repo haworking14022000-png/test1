@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chủ Đề 3: Giải Thích Pháp Luật - Bài Thuyết Trình Tuần 5</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Be Vietnam Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for rich text transitions -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        legal: {
+                            teal: '#0d3b44',
+                            tealLight: '#e0f2f1',
+                            gold: '#d97706',
+                            goldLight: '#fef3c7',
+                            softBg: '#f8fafc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f0f4f8;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        /* Slide animations */
+        .slide {
+            display: none;
+            opacity: 0;
+            width: 100%;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            opacity: 1;
+        }
+
+        /* Staggered entrance animations */
+        .slide.active .anim-delay-1 {
+            animation: fadeInUp 0.5s ease-out 0.1s both;
+        }
+        .slide.active .anim-delay-2 {
+            animation: fadeInUp 0.5s ease-out 0.25s both;
+        }
+        .slide.active .anim-delay-3 {
+            animation: fadeInUp 0.5s ease-out 0.4s both;
+        }
+        .slide.active .anim-delay-4 {
+            animation: fadeInUp 0.5s ease-out 0.55s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Animated dynamic mesh background */
+        .bg-mesh {
+            background-color: #f1f5f9;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 59, 68, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
+        }
+
+        /* Glowing Glass Cards */
+        .glass-card-hero {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -15px rgba(13, 59, 68, 0.12), 0 0 15px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hero:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(13, 59, 68, 0.2), 0 0 25px rgba(13, 59, 68, 0.15);
+            border-color: rgba(13, 59, 68, 0.3);
+        }
+
+        /* Float Animations */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-float-slow {
+            animation: float-slow 5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Main scroll customization */
+        .main-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .main-scroll::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 8px;
+        }
+        .main-scroll::-webkit-scrollbar-thumb {
+            background: #0d3b44;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between bg-mesh text-slate-900 antialiased overflow-hidden">
+
+    <!-- TOP BAR / HEADER NAVIGATION -->
+    <header class="h-20 shrink-0 px-6 md:px-12 flex items-center justify-between border-b-2 border-slate-200/80 bg-white/95 backdrop-blur-md z-30 shadow-sm">
+        <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-2xl bg-legal-teal text-amber-400 flex items-center justify-center font-black text-2xl shadow-lg animate-pulse-glow">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <div>
+                <span class="text-xs md:text-sm font-extrabold tracking-widest text-legal-gold uppercase block">TUẦN 5 - CHỦ ĐỀ 3</span>
+                <h1 class="text-base md:text-xl font-black text-slate-900 tracking-tight">GIẢI THÍCH PHÁP LUẬT</h1>
+            </div>
+        </div>
+
+        <!-- Slide Progress Indicator -->
+        <div class="flex items-center space-x-4">
+            <span id="slide-counter" class="text-sm md:text-base font-extrabold text-legal-teal bg-teal-50 px-4 py-1.5 rounded-full border border-legal-teal/30 shadow-inner">
+                1 / 10
+            </span>
+            <div class="w-24 md:w-44 bg-slate-200 h-3 rounded-full overflow-hidden p-0.5 border border-slate-300">
+                <div id="progress-bar" class="bg-gradient-to-r from-legal-teal to-teal-500 h-full w-0 transition-all duration-500 rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PRESENTATION CONTAINER -->
+    <main id="main-container" class="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 main-scroll overflow-y-auto">
+        
+        <!-- SLIDE 1: TITLE SLIDE -->
+        <section class="slide active py-4">
+            <div class="relative z-10 space-y-8 max-w-5xl mx-auto text-center my-auto">
+                <div class="anim-delay-1 inline-flex items-center space-x-3 px-6 py-2.5 rounded-full bg-legal-teal text-white font-bold text-base md:text-lg shadow-xl">
+                    <i class="fa-solid fa-graduation-cap text-amber-400 text-xl"></i>
+                    <span>BÀI THUYẾT TRÌNH MÔN PHÁP LUẬT</span>
+                </div>
+                
+                <h1 class="anim-delay-2 text-4xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tight leading-tight font-heading">
+                    CHỦ ĐỀ 3: <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-legal-teal via-teal-700 to-amber-600">
+                        GIẢI THÍCH PHÁP LUẬT
+                    </span>
+                </h1>
+
+                <p class="anim-delay-3 text-lg sm:text-2xl md:text-3xl text-slate-700 font-bold max-w-3xl mx-auto leading-relaxed">
+                    Khám phá chuyên sâu nội dung, dấu hiệu pháp lý, các phương pháp và ứng dụng thực tiễn trong hệ thống pháp luật Việt Nam.
+                </p>
+
+                <!-- Vector People & Justice SVG Illustration -->
+                <div class="anim-delay-4 pt-2 flex justify-center items-center">
+                    <div class="relative w-48 h-48 md:w-64 md:h-64 animate-float-slow">
+                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl">
+                            <!-- Background Shield Glow -->
+                            <path d="M100 15L165 45V105C165 145 100 185 100 185C100 185 35 145 35 105V45L100 15Z" fill="#0D3B44" opacity="0.1" />
+                            <path d="M100 25L155 52V102C155 137 100 172 100 172C100 172 45 137 45 102V52L100 25Z" fill="#E0F2F1" />
+                            
+                            <!-- Scale / Balance -->
+                            <rect x="95" y="45" width="10" height="90" rx="5" fill="#0D3B44" />
+                            <rect x="55" y="60" width="90" height="10" rx="5" fill="#D97706" />
+                            <circle cx="100" cy="40" r="14" fill="#D97706" />
+                            <path d="M60 65L40 105H80L60 65Z" fill="#0D3B44" opacity="0.7"/>
+                            <path d="M140 65L120 105H160L140 65Z" fill="#0D3B44" opacity="0.7"/>
+                            <rect x="75" y="130" width="50" height="15" rx="4" fill="#0D3B44" />
+                            
+                            <!-- Person / Judge Silhouette -->
+                            <circle cx="100" cy="85" r="16" fill="#141B2D" />
+                            <path d="M70 120C70 105 83 95 100 95C117 95 130 105 130 120V130H70V120Z" fill="#141B2D" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="anim-delay-4 pt-2">
+                    <button onclick="nextSlide()" class="px-10 py-5 bg-gradient-to-r from-legal-teal to-teal-800 hover:from-teal-800 hover:to-legal-teal text-white font-black text-xl md:text-2xl rounded-2xl shadow-2xl hover:shadow-teal-900/30 transition-all transform hover:-translate-y-1 inline-flex items-center space-x-4">
+                        <span>Bắt Đầu Thuyết Trình</span>
+                        <i class="fa-solid fa-circle-arrow-right text-amber-400"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: I.1 KHÁI NIỆM GIẢI THÍCH PHÁP LUẬT -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-legal-teal tracking-widest uppercase bg-legal-tealLight px-4 py-1.5 rounded-lg inline-block mb-2 border border-legal-teal/20">
+                    Phần I. Nội Dung & Dấu Hiệu Pháp Lý
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    1. Khái Niệm Giải Thích Pháp Luật
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-stretch my-auto">
+                <!-- Bản chất Card -->
+                <div class="anim-delay-2 glass-card-hero p-8 md:p-10 rounded-3xl border-l-8 border-l-legal-teal flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-legal-teal text-amber-400 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-4">Bản Chất</h3>
+                        <p class="text-slate-800 text-lg md:text-2xl font-semibold leading-relaxed">
+                            Là hoạt động <span class="text-legal-teal bg-teal-100/80 px-2 py-0.5 rounded-md font-black">làm sáng tỏ tư tưởng, nội dung và ý nghĩa</span> của các quy phạm pháp luật.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t-2 border-slate-200 text-sm md:text-base text-slate-600 font-bold flex items-center">
+                        <i class="fa-solid fa-circle-check text-legal-teal mr-2 text-xl"></i> 
+                        Chuyển hóa ngôn từ văn bản thành nhận thức chuẩn xác.
+                    </div>
+                </div>
+
+                <!-- Mục đích Card -->
+                <div class="anim-delay-3 glass-card-hero p-8 md:p-10 rounded-3xl border-l-8 border-l-amber-500 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-4">Mục Đích</h3>
+                        <p class="text-slate-800 text-lg md:text-2xl font-semibold leading-relaxed">
+                            Đảm bảo sự <span class="text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-md font-black">nhận thức đúng đắn và thực thi pháp luật thống nhất</span> trên thực tế.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t-2 border-slate-200 text-sm md:text-base text-slate-600 font-bold flex items-center">
+                        <i class="fa-solid fa-circle-check text-amber-500 mr-2 text-xl"></i> 
+                        Loại bỏ rào cản do hiểu sai hoặc thực hiện không thống nhất.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: I.2 DẤU HIỆU PHÁP LÝ -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-legal-teal tracking-widest uppercase bg-legal-tealLight px-4 py-1.5 rounded-lg inline-block mb-2 border border-legal-teal/20">
+                    Phần I. Nội Dung & Dấu Hiệu Pháp Lý
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    2. Dấu Hiệu Pháp Lý (Tiêu Chí Nhận Diện)
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+                <div class="anim-delay-2 glass-card-hero p-6 md:p-8 rounded-3xl flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl shrink-0 font-black shadow-lg">1</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-2">Đối tượng tác động</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl leading-relaxed">
+                            Tác động trực tiếp vào <span class="text-blue-700 bg-blue-50 px-2 py-0.5 rounded">ngôn từ và tinh thần</span> của văn bản / quy phạm pháp luật sẵn có.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-2 glass-card-hero p-6 md:p-8 rounded-3xl flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-2xl shrink-0 font-black shadow-lg">2</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-2">Giới hạn bản chất</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl leading-relaxed">
+                            Chỉ làm sáng tỏ nghĩa (rõ ràng, thống nhất), <span class="text-rose-600 bg-rose-50 px-2 py-0.5 rounded underline">TUYỆT ĐỐI KHÔNG</span> tạo ra luật mới hay sửa đổi luật.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 glass-card-hero p-6 md:p-8 rounded-3xl flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl shrink-0 font-black shadow-lg">3</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-2">Phương pháp thực hiện</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl leading-relaxed">
+                            Dựa trên phân tích ngữ nghĩa, logic, lịch sử ban hành và <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">tính hệ thống của pháp luật</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 glass-card-hero p-6 md:p-8 rounded-3xl flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-2xl shrink-0 font-black shadow-lg">4</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-2">Giá trị hiệu lực</h3>
+                        <ul class="text-slate-800 font-bold text-sm md:text-lg space-y-2">
+                            <li class="bg-purple-50 p-2 rounded-lg"> ChínThức: Do UBTVQH ban hành, giá trị bắt buộc chung.</li>
+                            <li class="bg-slate-100 p-2 rounded-lg"> KhôngChínhThức: Do chuyên gia/Tòa án, mang tính tham khảo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: I.3 PHÂN LOẠI GIẢI THÍCH PHÁP LUẬT -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-legal-teal tracking-widest uppercase bg-legal-tealLight px-4 py-1.5 rounded-lg inline-block mb-2 border border-legal-teal/20">
+                    Phần I. Nội Dung & Dấu Hiệu Pháp Lý
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    3. Phân Loại Giải Thích Pháp Luật
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 my-auto">
+                <!-- A. GIẢI THÍCH CHÍNH THỨC -->
+                <div class="anim-delay-2 glass-card-hero p-8 rounded-3xl border-t-8 border-t-legal-teal">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <span class="w-12 h-12 rounded-2xl bg-legal-teal text-amber-400 flex items-center justify-center font-black text-2xl shadow-md">A</span>
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-900">GIẢI THÍCH CHÍNH THỨC</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border-2 border-slate-200/80 shadow-sm">
+                            <span class="text-xs font-black text-legal-teal uppercase tracking-wider block mb-1">1. Chủ thể thực hiện</span>
+                            <p class="text-slate-900 font-extrabold text-base md:text-xl">Cơ quan, cá nhân có thẩm quyền (UBTVQH...)</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border-2 border-slate-200/80 shadow-sm">
+                            <span class="text-xs font-black text-legal-teal uppercase tracking-wider block mb-1">2. Giá trị pháp lý</span>
+                            <p class="text-rose-700 font-extrabold text-base md:text-xl">Mang tính BẮT BUỘC, có giá trị ràng buộc thi hành</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border-2 border-slate-200/80 shadow-sm">
+                            <span class="text-xs font-black text-legal-teal uppercase tracking-wider block mb-1">3. Các hình thức</span>
+                            <p class="text-slate-800 font-bold text-sm md:text-base leading-relaxed">
+                                • <strong>Quy phạm:</strong> Giải thích chung để áp dụng thống nhất.<br>
+                                • <strong>Cá biệt:</strong> Hướng dẫn áp dụng cho một vụ việc cụ thể.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B. GIẢI THÍCH KHÔNG CHÍNH THỨC -->
+                <div class="anim-delay-3 glass-card-hero p-8 rounded-3xl border-t-8 border-t-slate-500">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <span class="w-12 h-12 rounded-2xl bg-slate-600 text-white flex items-center justify-center font-black text-2xl shadow-md">B</span>
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-900">GIẢI THÍCH KHÔNG CHÍNH THỨC</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border-2 border-slate-200/80 shadow-sm">
+                            <span class="text-xs font-black text-slate-500 uppercase tracking-wider block mb-1">1. Chủ thể thực hiện</span>
+                            <p class="text-slate-900 font-extrabold text-base md:text-xl">Chuyên gia, luật sư, giảng viên, nhà nghiên cứu...</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border-2 border-slate-200/80 shadow-sm">
+                            <span class="text-xs font-black text-slate-500 uppercase tracking-wider block mb-1">2. Giá trị pháp lý</span>
+                            <p class="text-slate-700 font-extrabold text-base md:text-xl">KHÔNG bắt buộc, KHÔNG có giá trị ràng buộc</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border-2 border-slate-200/80 shadow-sm">
+                            <span class="text-xs font-black text-slate-500 uppercase tracking-wider block mb-1">3. Ý nghĩa</span>
+                            <p class="text-slate-800 font-bold text-sm md:text-base leading-relaxed">
+                                Hỗ trợ nghiên cứu, giảng dạy, phổ biến và nâng cao ý thức pháp luật.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: I.4 PHƯƠNG PHÁP GIẢI THÍCH -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-legal-teal tracking-widest uppercase bg-legal-tealLight px-4 py-1.5 rounded-lg inline-block mb-2 border border-legal-teal/20">
+                    Phần I. Nội Dung & Dấu Hiệu Pháp Lý
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    4. Các Phương Pháp Giải Thích Pháp Luật
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
+                <div class="anim-delay-2 glass-card-hero p-6 rounded-3xl flex flex-col justify-between border-t-8 border-t-blue-500">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-black text-2xl mb-4 shadow-sm">a</div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-3">Văn Phạm (Ngôn ngữ)</h3>
+                        <p class="text-slate-700 font-semibold text-sm md:text-lg leading-relaxed">
+                            Phân tích ý nghĩa của từ ngữ, câu chữ và cấu trúc ngữ pháp trong quy phạm để làm rõ nội dung.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-2 glass-card-hero p-6 rounded-3xl flex flex-col justify-between border-t-8 border-t-amber-500">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-2xl mb-4 shadow-sm">b</div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-3">Phương Pháp Logic</h3>
+                        <p class="text-slate-700 font-semibold text-sm md:text-lg leading-relaxed">
+                            Sử dụng các quy tắc tư duy, suy luận logic để làm sáng tỏ nội dung và ý nghĩa của quy phạm.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 glass-card-hero p-6 rounded-3xl flex flex-col justify-between border-t-8 border-t-emerald-500">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-2xl mb-4 shadow-sm">c</div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-3">Phương Pháp Hệ Thống</h3>
+                        <p class="text-slate-700 font-semibold text-sm md:text-lg leading-relaxed">
+                            Đặt quy phạm trong mối liên hệ với các quy phạm khác, các chế định và ngành luật để xác định đúng nghĩa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 glass-card-hero p-6 rounded-3xl flex flex-col justify-between border-t-8 border-t-purple-500">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-black text-2xl mb-4 shadow-sm">d</div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-3">Chính Trị – Lịch Sử</h3>
+                        <p class="text-slate-700 font-semibold text-sm md:text-lg leading-relaxed">
+                            Dựa vào hoàn cảnh chính trị, lịch sử, kinh tế – xã hội tại thời điểm ban hành văn bản để làm rõ nội dung.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: II.1 Ý NGHĨA -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-legal-teal tracking-widest uppercase bg-legal-tealLight px-4 py-1.5 rounded-lg inline-block mb-2 border border-legal-teal/20">
+                    Phần II. Ý Nghĩa & Bàn Luận
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    1. Ý Nghĩa Của Giải Thích Pháp Luật
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+                <div class="anim-delay-2 glass-card-hero p-6 md:p-8 rounded-3xl flex items-center space-x-6">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900">Bảo đảm áp dụng thống nhất</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl mt-1">Tránh tình trạng hiểu sai hoặc áp dụng tùy tiện ở từng cơ quan.</p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-2 glass-card-hero p-6 md:p-8 rounded-3xl flex items-center space-x-6">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900">Làm rõ nội dung quy phạm</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl mt-1">Sáng tỏ ngôn từ kỹ thuật trừu tượng thành quy định dễ hiểu.</p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 glass-card-hero p-6 md:p-8 rounded-3xl flex items-center space-x-6">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900">Bảo vệ quyền & lợi ích hợp pháp</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl mt-1">Tạo cơ sở pháp lý vững chắc bảo vệ quyền lợi công dân.</p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 glass-card-hero p-6 md:p-8 rounded-3xl flex items-center space-x-6">
+                    <div class="w-16 h-16 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-slate-900">Nâng cao hiệu quả quản lý</h3>
+                        <p class="text-slate-700 font-bold text-base md:text-xl mt-1">Giúp cơ quan nhà nước thực thi đúng chức năng nhiệm vụ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: II.2 VẤN ĐỀ THỰC TẾ & ÁN LỆ 04 -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-rose-600 tracking-widest uppercase bg-rose-100 px-4 py-1.5 rounded-lg inline-block mb-2 border border-rose-200">
+                    Phần II. Bất Cập Thực Tế & Án Lệ
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    2. Vấn Đề Có Thể Xảy Ra & Dẫn Chứng Án Lệ
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-6 my-auto">
+                <div class="anim-delay-2 md:col-span-5 space-y-4">
+                    <h3 class="text-xl font-black text-slate-900 flex items-center">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2 text-2xl"></i> Những Bất Cập Thực Tế
+                    </h3>
+                    
+                    <div class="glass-card-hero p-5 rounded-2xl border-l-8 border-l-rose-500">
+                        <h4 class="font-black text-slate-900 text-lg">1. Giải thích chủ quan, vượt giới hạn</h4>
+                        <p class="text-sm md:text-base text-slate-700 font-bold mt-1">Có trường hợp làm thay đổi tinh thần văn bản gốc.</p>
+                    </div>
+
+                    <div class="glass-card-hero p-5 rounded-2xl border-l-8 border-l-amber-500">
+                        <h4 class="font-black text-slate-900 text-lg">2. Chồng chéo, mâu thuẫn</h4>
+                        <p class="text-sm md:text-base text-slate-700 font-bold mt-1">Văn bản hướng dẫn giữa các ngành chưa đồng nhất.</p>
+                    </div>
+
+                    <div class="glass-card-hero p-5 rounded-2xl border-l-8 border-l-blue-500">
+                        <h4 class="font-black text-slate-900 text-lg">3. Độ trễ pháp lý</h4>
+                        <p class="text-sm md:text-base text-slate-700 font-bold mt-1">Chậm ban hành giải thích so với thực tiễn phát sinh.</p>
+                    </div>
+                </div>
+
+                <div class="anim-delay-3 md:col-span-7 glass-card-hero p-8 rounded-3xl border-2 border-legal-teal/30 bg-gradient-to-br from-white via-teal-50/40 to-amber-50/30 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-4 py-1 bg-legal-teal text-amber-400 rounded-full text-xs md:text-sm font-black uppercase tracking-wider">
+                                DẪN CHỨNG THỰC TẾ
+                            </span>
+                            <span class="text-xs md:text-sm font-black text-slate-500">Tòa án nhân dân Tối cao</span>
+                        </div>
+
+                        <h3 class="text-2xl md:text-3xl font-black text-legal-teal mb-2">Án lệ số 04/2016/AL</h3>
+                        <p class="text-base md:text-xl font-extrabold text-slate-800 mb-4">
+                            Vụ án “Tranh chấp hợp đồng chuyển nhượng quyền sử dụng đất”
+                        </p>
+
+                        <div class="bg-white p-6 rounded-2xl text-slate-800 text-sm md:text-lg font-semibold space-y-3 border-2 border-slate-200 shadow-sm leading-relaxed">
+                            <p><strong class="text-legal-teal">Nội dung:</strong> Làm rõ hiệu lực hợp đồng trong trường hợp đất chưa có GCN nhưng bên mua đã xây nhà ổn định và bên bán không phản đối.</p>
+                            <p><strong class="text-amber-600">Ý nghĩa giải thích:</strong> Công nhận hợp đồng có hiệu lực nhằm bảo vệ quyền lợi hợp pháp chính đáng của bên nhận chuyển nhượng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: II.3 GIẢI PHÁP (EXACT IMAGE RECREATION WITH HIGH CONTRAST) -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 w-full shadow-2xl rounded-3xl overflow-hidden border-2 border-teal-900/40 my-auto">
+                <div class="bg-[#0f343c] text-white p-6 text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black tracking-widest uppercase font-heading">GIẢI PHÁP</h2>
+                    <p class="text-base md:text-xl font-bold text-teal-200 mt-1">Nâng cao hiệu quả giải thích pháp luật</p>
+                    <div class="text-sm font-extrabold text-amber-400 tracking-wider mt-1">Chính xác · Thống nhất · Kịp thời</div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-200 p-4">
+                    <div class="bg-[#eaf4f4] p-6 rounded-2xl border-2 border-teal-200 shadow-sm">
+                        <h3 class="font-black text-lg md:text-2xl mb-3 text-slate-900 border-b-2 border-teal-300 pb-2">01. ĐÚNG THẨM QUYỀN</h3>
+                        <ul class="space-y-2 text-sm md:text-lg font-bold text-slate-800">
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-teal-700 mr-2"></i> Đúng chức năng, thẩm quyền</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-teal-700 mr-2"></i> Không vượt giới hạn văn bản gốc</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-teal-700 mr-2"></i> Không tự đặt ra quy định mới</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-[#edf2fa] p-6 rounded-2xl border-2 border-blue-200 shadow-sm">
+                        <h3 class="font-black text-lg md:text-2xl mb-3 text-slate-900 border-b-2 border-blue-300 pb-2">02. THỐNG NHẤT</h3>
+                        <ul class="space-y-2 text-sm md:text-lg font-bold text-slate-800">
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-blue-700 mr-2"></i> Phối hợp giữa các cơ quan</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-blue-700 mr-2"></i> Rà soát mâu thuẫn, chồng chéo</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-blue-700 mr-2"></i> Công khai văn bản, phát triển án lệ</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-[#fcf5e5] p-6 rounded-2xl border-2 border-amber-200 shadow-sm">
+                        <h3 class="font-black text-lg md:text-2xl mb-3 text-slate-900 border-b-2 border-amber-300 pb-2">03. KỊP THỜI</h3>
+                        <ul class="space-y-2 text-sm md:text-lg font-bold text-slate-800">
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-amber-700 mr-2"></i> Rà soát quy định chưa phù hợp</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-amber-700 mr-2"></i> Cập nhật, công khai thông tin</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-amber-700 mr-2"></i> Nâng cao năng lực chuyên môn</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-[#f8edf5] p-6 rounded-2xl border-2 border-pink-200 shadow-sm">
+                        <h3 class="font-black text-lg md:text-2xl mb-3 text-slate-900 border-b-2 border-pink-300 pb-2">04. LIÊN HỆ BẢN THÂN</h3>
+                        <ul class="space-y-2 text-sm md:text-lg font-bold text-slate-800">
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-pink-700 mr-2"></i> Tra cứu nguồn chính thống</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-pink-700 mr-2"></i> Đối chiếu quy định liên quan</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-pink-700 mr-2"></i> Rèn luyện tư duy pháp lý</li>
+                            <li class="flex items-center"><i class="fa-solid fa-angle-right text-pink-700 mr-2"></i> Vận dụng vào kinh doanh quốc tế</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-[#0f343c] text-amber-400 py-3 px-6 text-center font-black tracking-widest text-sm md:text-xl uppercase border-t border-teal-800">
+                    HIỂU ĐÚNG &rarr; ÁP DỤNG ĐÚNG &rarr; THỰC HIỆN ĐÚNG
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: III.1 ÁN LỆ 17/2018/AL -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 mb-6 text-left">
+                <span class="text-sm md:text-base font-extrabold text-legal-teal tracking-widest uppercase bg-legal-tealLight px-4 py-1.5 rounded-lg inline-block mb-2 border border-legal-teal/20">
+                    Phần III. Liên Hệ Thực Tiễn
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-heading leading-tight">
+                    1. Liên Hệ Thực Tế: Án Lệ Số 17/2018/AL
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8 items-stretch my-auto">
+                <div class="anim-delay-2 md:col-span-6 glass-card-hero p-8 rounded-3xl border-4 border-dashed border-legal-teal/40 flex flex-col items-center justify-center min-h-[300px] text-center">
+                    <div class="w-20 h-20 bg-legal-teal text-amber-400 rounded-3xl flex items-center justify-center text-4xl mb-4 shadow-xl animate-pulse-glow">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <span class="text-sm font-black uppercase tracking-widest text-legal-teal bg-legal-tealLight px-4 py-1.5 rounded-full mb-2">
+                        SLIDE HÌNH ẢNH ÁN LỆ
+                    </span>
+                    <h3 class="text-2xl font-black text-slate-900">Án Lệ 17/2018/AL</h3>
+                    <p class="text-base text-slate-600 font-bold mt-2">
+                        (Khu vực chiếu sơ đồ/hình ảnh tư liệu trực quan cho người thuyết trình)
+                    </p>
+                </div>
+
+                <div class="anim-delay-3 md:col-span-6 bg-slate-900 text-white p-8 rounded-3xl space-y-4 shadow-2xl border border-slate-700 flex flex-col justify-center">
+                    <div class="flex items-center space-x-3 text-amber-400 font-black text-sm md:text-base uppercase tracking-wider">
+                        <i class="fa-solid fa-microphone-lines text-2xl"></i>
+                        <span>NỘI DUNG DÀNH CHO NGƯỜI THUYẾT TRÌNH</span>
+                    </div>
+
+                    <h3 class="text-2xl md:text-3xl font-black text-white">Người thuyết trình tự soạn & phát biểu:</h3>
+                    
+                    <ul class="space-y-4 text-base md:text-xl font-bold text-slate-200 leading-relaxed">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-arrow-right text-amber-400 text-xl mt-1 shrink-0"></i>
+                            <span><strong>Tóm tắt vụ việc:</strong> Trình bày tình huống thực tế dẫn đến tranh chấp.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-arrow-right text-amber-400 text-xl mt-1 shrink-0"></i>
+                            <span><strong>Vướng mắc pháp lý:</strong> Phân tích xung đột ngữ nghĩa trong điều luật cần được giải thích.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-arrow-right text-amber-400 text-xl mt-1 shrink-0"></i>
+                            <span><strong>Lập luận Tòa án:</strong> Phán quyết giải thích mang tính bước ngoặt của Án lệ.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: III.2 KẾT LUẬN -->
+        <section class="slide py-2">
+            <div class="anim-delay-1 max-w-4xl space-y-8 glass-card-hero p-10 md:p-14 rounded-3xl border-4 border-legal-teal/30 text-center mx-auto my-auto shadow-2xl">
+                <div class="w-20 h-20 bg-legal-teal text-amber-400 rounded-3xl mx-auto flex items-center justify-center text-4xl shadow-xl animate-pulse-glow">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-relaxed font-heading">
+                    "Giá trị của pháp luật không chỉ nằm ở những quy định được ban hành, mà còn nằm ở <span class="text-legal-teal underline decoration-amber-500 decoration-4">cách chúng ta hiểu và vận dụng</span> những quy định ấy trong thực tiễn."
+                </h2>
+
+                <div class="pt-4 border-t-2 border-slate-200">
+                    <span class="text-base md:text-lg font-black tracking-widest text-slate-500 uppercase">
+                        KẾT LUẬN - CHỦ ĐỀ 3: GIẢI THÍCH PHÁP LUẬT
+                    </span>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="goToSlide(0)" class="px-8 py-4 bg-slate-900 hover:bg-slate-800 text-amber-400 rounded-2xl text-base md:text-xl font-black transition-all inline-flex items-center space-x-3 shadow-xl">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Xem Lại Từ Đầu Slide</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM CONTROLS & NAVIGATION -->
+    <footer class="h-20 shrink-0 px-6 md:px-12 flex items-center justify-between border-t-2 border-slate-200/80 bg-white/95 backdrop-blur-md z-30 shadow-lg">
+        <button onclick="prevSlide()" class="px-6 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-base md:text-lg transition-all flex items-center space-x-3 border-2 border-slate-300">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="hidden sm:inline">Slide Trước</span>
+        </button>
+
+        <div id="dots-container" class="flex items-center space-x-2 md:space-x-3">
+            <!-- Dynamic Navigation Dots -->
+        </div>
+
+        <button onclick="nextSlide()" class="px-6 py-3 rounded-2xl bg-legal-teal hover:bg-teal-900 text-white font-black text-base md:text-lg transition-all flex items-center space-x-3 shadow-xl">
+            <span class="hidden sm:inline">Slide Tiếp</span>
+            <i class="fa-solid fa-arrow-right text-amber-400"></i>
+        </button>
+    </footer>
+
+    <!-- SLIDE CONTROL JAVASCRIPT WITH SCROLL RESET & ANIMATION TRIGGER -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const counterEl = document.getElementById('slide-counter');
+        const progressBarEl = document.getElementById('progress-bar');
+        const dotsContainer = document.getElementById('dots-container');
+        const mainContainer = document.getElementById('main-container');
+
+        // Create navigation dots
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = `w-3 h-3 md:w-4 md:h-4 rounded-full transition-all ${idx === 0 ? 'bg-legal-teal w-8 md:w-10' : 'bg-slate-300 hover:bg-slate-400'}`;
+            dot.onclick = () => goToSlide(idx);
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateSlideUI() {
+            // Hide all and display active slide
+            slides.forEach((slide, idx) => {
+                if (idx === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Always reset scroll to top smoothly
+            if (mainContainer) {
+                mainContainer.scrollTop = 0;
+            }
+
+            // Update Counter
+            counterEl.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+            // Update Progress Bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBarEl.style.width = `${progress}%`;
+
+            // Update Dots
+            const dots = dotsContainer.querySelectorAll('button');
+            dots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.className = 'w-8 md:w-10 h-3 md:h-4 rounded-full bg-legal-teal transition-all shadow-md';
+                } else {
+                    dot.className = 'w-3 md:w-4 h-3 md:h-4 rounded-full bg-slate-300 hover:bg-slate-400 transition-all';
+                }
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlideUI();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlideUI();
+            }
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSlideUI();
+            }
+        }
+
+        // Keyboard control
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize UI
+        updateSlideUI();
+    </script>
+</body>
+</html>
